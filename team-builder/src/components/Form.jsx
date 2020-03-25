@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Form() {
+function Form(props) {
+    console.log(props);
     return (
         <form>
             <label>

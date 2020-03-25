@@ -26,11 +26,37 @@ function App() {
         role: ""
     });
     //Targets
+    const inputChange = event => {
+        const inputChanged = event.target.name;
+        const newVal = event.target.value;
+        setFormVals({
+            ...formVals,
+            [inputChanged]: newVal
+        });
+    };
+    //Form submission
+    const onFormSubmit = event => {
+        event.preventDefault();
+        const newTeamMember = {
+            id: Math.random() * 20,
+            name: formVals.name,
+            email: formVals.email,
+            role: formVals.role
+        };
+        setTeam([...team, newTeamMember]);
+    };
 
     return (
         <div className="App">
+            {/* Decided to add the form to the top of the page.  */}
             <h2>Add a team member: </h2>
-            <Form />
+            <Form
+                team={team}
+                setTeam={setTeam}
+                setFormVals={setFormVals}
+                formVals={formVals}
+            />
+            {/* Have the rest of the team already displayed */}
             <h1>List of people on the team:</h1>
             {team.map(person => (
                 <div key={person.id}>
