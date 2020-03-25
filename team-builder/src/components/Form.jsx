@@ -24,20 +24,35 @@ function Form(props) {
     };
 
     return (
-        <form>
+        <form onSubmit={onFormSubmit}>
             <label>
                 Name:
-                <input name="name" type="text" />
+                <input
+                    name="name"
+                    type="text"
+                    onChange={inputChange}
+                    value={props.forVals.name}
+                />
             </label>
             <br />
             <label>
                 Email:
-                <input name="email" type="email" />
+                <input
+                    name="email"
+                    type="email"
+                    onChange={inputChange}
+                    value={props.formVals.email}
+                />
             </label>
             <br />
             <label>
                 Role:
-                <input type="text" name="role" />
+                <input
+                    type="text"
+                    name="role"
+                    onChange={inputChange}
+                    value={props.formVals.role}
+                />
             </label>
             <br />
             <input type="submit" />
