@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Form from "./components/Form";
+import styled from "styled-components";
 //making of the team
 const originalTeam = [
     {
@@ -15,6 +16,17 @@ const originalTeam = [
         role: "KeyBoard Masher"
     }
 ];
+//some styling
+const Boxed = styled.div`
+    border: 5px ridge lightblue;
+    padding: 1% 3%;
+    margin: 0 3%;
+`;
+const Grided = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7% 0%;
+`;
 //App displayed here
 function App() {
     //useState to set the original team
@@ -30,6 +42,7 @@ function App() {
         <div className="App">
             {/* Decided to add the form to the top of the page.  */}
             <h2>Add a team member: </h2>
+            <div>{/* empty div */}</div>
             <Form
                 team={team}
                 setTeam={setTeam}
@@ -38,15 +51,18 @@ function App() {
             />
             {/* Have the rest of the team already displayed */}
             <h1>List of people on the team:</h1>
-            {team.map(person => (
-                <div key={person.id}>
-                    <h3>{person.name}</h3>
-                    <br />
-                    <address>{person.email}</address>
-                    <br />
-                    <p>{person.role}</p>
-                </div>
-            ))}
+            <Grided>
+                {" "}
+                {team.map(person => (
+                    <Boxed key={person.id}>
+                        <h3>{person.name}</h3>
+                        <br />
+                        <address>{person.email}</address>
+                        <br />
+                        <p>{person.role}</p>
+                    </Boxed>
+                ))}
+            </Grided>
         </div>
     );
 }
