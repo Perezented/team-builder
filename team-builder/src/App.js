@@ -25,26 +25,6 @@ function App() {
         email: "",
         role: ""
     });
-    //Targets
-    const inputChange = event => {
-        const inputChanged = event.target.name;
-        const newVal = event.target.value;
-        setFormVals({
-            ...formVals,
-            [inputChanged]: newVal
-        });
-    };
-    //Form submission
-    const onFormSubmit = event => {
-        event.preventDefault();
-        const newTeamMember = {
-            id: Math.random() * 20,
-            name: formVals.name,
-            email: formVals.email,
-            role: formVals.role
-        };
-        setTeam([...team, newTeamMember]);
-    };
 
     return (
         <div className="App">
